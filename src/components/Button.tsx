@@ -1,33 +1,41 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 
-import { useTheme } from "@shopify/restyle";
+import { spacing, SpacingProps, useRestyle, useTheme } from "@shopify/restyle";
 import { Theme } from "./Theme";
 
 import Text from "./Text";
 
-interface Props {
-    variant: "default" | "primary";
+const restyleFunctions = [spacing];
+type Props = SpacingProps<Theme> & {
+    variant: "default" | "primary" | "transparent";
     label: string;
     onPress: () => void;
-}
+};
 
-const Button = ({ variant, label, onPress }: Props) => {
+const Button = ({ variant, label, onPress, ...rest }: Props) => {
+    const props = useRestyle(restyleFunctions, rest);
     const { colors } = useTheme<Theme>();
     const backgroundColor =
-        variant === "primary" ? colors.primary : colors.grey;
-    const color = variant === "primary" ? colors.white : colors.text;
+        variant === "primary"
+            ? colors.primary
+            : variant === "default"
+            ? colors.grey
+            : "transparent";
+    const color = variant === "primary" ? colors.white : colors.buttonText;
 
     return (
-        <RectButton
-            style={[styles.container, { backgroundColor }]}
-            {...{ onPress }}
-        >
-            <Text variant="buttonText" style={{ color }}>
-                {label}
-            </Text>
-        </RectButton>
+        <View {...props}>
+            <RectButton
+                style={[styles.container, { backgroundColor }]}
+                {...{ onPress }}
+            >
+                <Text variant="buttonText" style={{ color }}>
+                    {label}
+                </Text>
+            </RectButton>
+        </View>
     );
 };
 

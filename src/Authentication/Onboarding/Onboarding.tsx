@@ -11,7 +11,8 @@ import { useScrollHandler, interpolateColor } from "react-native-redash/src/v1";
 import Slide, { SLIDE_HEIGHT } from "./Slide";
 import SubSlide from "./SubSlide";
 import Dot from "./Dot";
-import { theme } from "../../components";
+
+import { Routes, StackNavigationProps, theme } from "../../components";
 
 const { width } = Dimensions.get("window");
 
@@ -22,7 +23,7 @@ const slides = [
         description:
             "Confused about your outfit? Don't worry! Find the best outfit here!",
         color: "#BFEAF5",
-        picture: { src: require("./assets/1.png"), width: 409, height: 958 },
+        picture: { src: require("../assets/1.png"), width: 409, height: 958 },
     },
     {
         title: "Playful",
@@ -30,7 +31,7 @@ const slides = [
         description:
             "Hating the clothes in your wardrobe? Explore hundreds of outfit ideas",
         color: "#BEECC4",
-        picture: { src: require("./assets/2.png"), width: 452, height: 1299 },
+        picture: { src: require("../assets/2.png"), width: 452, height: 1299 },
     },
     {
         title: "Eccentric",
@@ -38,7 +39,7 @@ const slides = [
         description:
             "Create your indivisual & unique style and look amazing everyday",
         color: "#FFE4D9",
-        picture: { src: require("./assets/3.png"), width: 256, height: 755 },
+        picture: { src: require("../assets/3.png"), width: 256, height: 755 },
     },
     {
         title: "Funky",
@@ -46,11 +47,15 @@ const slides = [
         description:
             "Discover the latest trends in fashion and explore your personality",
         color: "#FFDDDD",
-        picture: { src: require("./assets/4.png"), width: 651, height: 1224 },
+        picture: { src: require("../assets/4.png"), width: 651, height: 1224 },
     },
 ];
 
-const Onboarding = () => {
+export const assets = [slides.map(({ picture: { src } }) => src)];
+
+const Onboarding = ({
+    navigation,
+}: StackNavigationProps<Routes, "Onboarding">) => {
     const scrollRef = useRef(null);
     const { scrollHandler, x } = useScrollHandler();
     const backgroundColor = interpolateColor(x, {
@@ -133,19 +138,31 @@ const Onboarding = () => {
                             flexDirection: "row",
                         }}
                     >
-                        {slides.map(({ subtitle, description }, index) => (
-                            <SubSlide
-                                key={index}
-                                last={index === slides.length - 1}
-                                onPress={() =>
+                        {slides.map(({ subtitle, description }, index) => {
+                            const last = index === slides.length - 1;
+                            const onPress = () => {
+                                if (last) {
+                                    navigation.navigate("Welcome");
+                                } else {
                                     scrollRef.current?.getNode().scrollTo({
                                         x: width * (index + 1),
                                         animated: true,
-                                    })
+                                    });
                                 }
-                                {...{ subtitle, description }}
-                            />
-                        ))}
+                            };
+
+                            return (
+                                <SubSlide
+                                    key={index}
+                                    {...{
+                                        subtitle,
+                                        description,
+                                        onPress,
+                                        last,
+                                    }}
+                                />
+                            );
+                        })}
                     </Animated.View>
                 </View>
             </View>

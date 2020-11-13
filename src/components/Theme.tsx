@@ -1,7 +1,7 @@
 import { createTheme } from "@shopify/restyle";
 
 const palette = {
-    white: "#F0F2F3",
+    white: "white",
 };
 
 const theme = createTheme({

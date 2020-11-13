@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
-import { Text } from "../../components";
+import { Box, Text } from "../../components";
 
 const { width, height } = Dimensions.get("window");
 export const SLIDE_HEIGHT = 0.61 * height;
@@ -17,22 +17,12 @@ const Slide = ({ title, right }: Props) => {
         { rotate: right ? "-90deg" : "90deg" },
     ];
     return (
-        <View style={styles.container}>
-            <View style={[styles.titleContainer, { transform }]}>
+        <Box width={width}>
+            <Box height={100} justifyContent="center" style={{ transform }}>
                 <Text variant="hero">{title}</Text>
-            </View>
-        </View>
+            </Box>
+        </Box>
     );
 };
 
 export default Slide;
-
-const styles = StyleSheet.create({
-    container: {
-        width,
-    },
-    titleContainer: {
-        height: 100,
-        justifyContent: "center",
-    },
-});

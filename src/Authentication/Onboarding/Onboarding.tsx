@@ -1,11 +1,17 @@
 import React, { useRef } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
-import Animated, { divide, multiply } from "react-native-reanimated";
+import { View, StyleSheet, Dimensions, Image } from "react-native";
+import Animated, {
+    divide,
+    Extrapolate,
+    interpolate,
+    multiply,
+} from "react-native-reanimated";
 import { useScrollHandler, interpolateColor } from "react-native-redash/src/v1";
 
-import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./Slide";
+import Slide, { SLIDE_HEIGHT } from "./Slide";
 import SubSlide from "./SubSlide";
 import Dot from "./Dot";
+import { theme } from "../../components";
 
 const { width } = Dimensions.get("window");
 
@@ -16,7 +22,7 @@ const slides = [
         description:
             "Confused about your outfit? Don't worry! Find the best outfit here!",
         color: "#BFEAF5",
-        picture: require("./assets/1.png"),
+        picture: { src: require("./assets/1.png"), width: 409, height: 958 },
     },
     {
         title: "Playful",
@@ -24,7 +30,7 @@ const slides = [
         description:
             "Hating the clothes in your wardrobe? Explore hundreds of outfit ideas",
         color: "#BEECC4",
-        picture: require("./assets/2.png"),
+        picture: { src: require("./assets/2.png"), width: 452, height: 1299 },
     },
     {
         title: "Eccentric",
@@ -32,7 +38,7 @@ const slides = [
         description:
             "Create your indivisual & unique style and look amazing everyday",
         color: "#FFE4D9",
-        picture: require("./assets/3.png"),
+        picture: { src: require("./assets/3.png"), width: 256, height: 755 },
     },
     {
         title: "Funky",
@@ -40,7 +46,7 @@ const slides = [
         description:
             "Discover the latest trends in fashion and explore your personality",
         color: "#FFDDDD",
-        picture: require("./assets/4.png"),
+        picture: { src: require("./assets/4.png"), width: 651, height: 1224 },
     },
 ];
 
@@ -55,6 +61,35 @@ const Onboarding = () => {
     return (
         <View style={styles.container}>
             <Animated.View style={[styles.slider, { backgroundColor }]}>
+                {slides.map(({ picture }, index) => {
+                    const opacity = interpolate(x, {
+                        inputRange: [
+                            (index - 0.5) * width,
+                            index * width,
+                            (index + 0.5) * width,
+                        ],
+                        outputRange: [0, 1, 0],
+                        extrapolate: Extrapolate.CLAMP,
+                    });
+
+                    return (
+                        <Animated.View
+                            style={[styles.underlay, { opacity }]}
+                            key={index}
+                        >
+                            <Image
+                                source={picture.src}
+                                style={{
+                                    ...StyleSheet.absoluteFillObject,
+                                    width: width - theme.borderRadii.xl,
+                                    height:
+                                        (width - theme.borderRadii.xl) *
+                                        (picture.height / picture.width),
+                                }}
+                            />
+                        </Animated.View>
+                    );
+                })}
                 <Animated.ScrollView
                     ref={scrollRef}
                     horizontal
@@ -127,14 +162,21 @@ const styles = StyleSheet.create({
     },
     slider: {
         height: SLIDE_HEIGHT,
-        borderBottomRightRadius: BORDER_RADIUS,
+        borderBottomRightRadius: theme.borderRadii.xl,
+    },
+    underlay: {
+        ...StyleSheet.absoluteFillObject,
+        alignItems: "center",
+        justifyContent: "flex-end",
+        borderBottomRightRadius: theme.borderRadii.xl,
+        overflow: "hidden",
     },
     footer: {
         flex: 1,
     },
     pagination: {
         ...StyleSheet.absoluteFillObject,
-        height: BORDER_RADIUS,
+        height: theme.borderRadii.xl,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
@@ -142,6 +184,6 @@ const styles = StyleSheet.create({
     footerContent: {
         flex: 1,
         backgroundColor: "white",
-        borderTopLeftRadius: BORDER_RADIUS,
+        borderTopLeftRadius: theme.borderRadii.xl,
     },
 });

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Dimensions, StatusBar, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import theme from "./Theme";
+import theme, { useTheme } from "./Theme";
 import Box from "./Box";
 
 const { width, height } = Dimensions.get("window");
@@ -31,6 +31,7 @@ const Container = ({
     footer,
 }: Props) => {
     const insets = useSafeAreaInsets();
+    const theme = useTheme();
 
     return (
         <Box flex={1} bg="secondary">

@@ -7,7 +7,7 @@ import {
     Routes,
     StackNavigationProps,
     Text,
-    theme,
+    useTheme,
 } from "../../components";
 
 const { width } = Dimensions.get("window");
@@ -21,6 +21,8 @@ const picture = {
 export const assets = [picture.src];
 
 const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
+    const theme = useTheme();
+
     return (
         <Box flex={1} bg="white">
             <Box

@@ -2,9 +2,7 @@ import React, { ReactNode } from "react";
 
 import Svg, { Path } from "react-native-svg";
 
-import { Box, Text, theme } from "../../components";
-
-const SIZE = theme.borderRadii.l * 2;
+import { Box, useTheme } from "../../components";
 
 const Facebook = () => (
     <Svg width={10.384} height={20} viewBox="88.428 12.828 107.543 207.085">
@@ -51,19 +49,23 @@ const Apple = () => (
 interface SocialIconProps {
     children: ReactNode;
 }
-const SocialIcon = ({ children }: SocialIconProps) => (
-    <Box
-        bg="white"
-        width={SIZE}
-        height={SIZE}
-        borderRadius="l"
-        justifyContent="center"
-        alignItems="center"
-        mx="m"
-    >
-        {children}
-    </Box>
-);
+const SocialIcon = ({ children }: SocialIconProps) => {
+    const theme = useTheme();
+    const SIZE = theme.borderRadii.l * 2;
+    return (
+        <Box
+            bg="white"
+            width={SIZE}
+            height={SIZE}
+            borderRadius="l"
+            justifyContent="center"
+            alignItems="center"
+            mx="m"
+        >
+            {children}
+        </Box>
+    );
+};
 
 interface Props {
     facebook: boolean;

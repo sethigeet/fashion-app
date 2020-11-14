@@ -12,7 +12,13 @@ import Slide, { SLIDE_HEIGHT } from "./Slide";
 import SubSlide from "./SubSlide";
 import Dot from "./Dot";
 
-import { Routes, StackNavigationProps, theme } from "../../components";
+import {
+    Routes,
+    StackNavigationProps,
+    Theme,
+    useTheme,
+    makeStyles,
+} from "../../components";
 
 const { width } = Dimensions.get("window");
 
@@ -62,6 +68,9 @@ const Onboarding = ({
         inputRange: slides.map((_, i) => i * width),
         outputRange: slides.map((slide) => slide.color),
     });
+
+    const theme = useTheme();
+    const styles = useStyles();
 
     return (
         <View style={styles.container}>
@@ -173,7 +182,7 @@ const Onboarding = ({
 
 export default Onboarding;
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme: Theme) => ({
     container: {
         flex: 1,
         backgroundColor: "white",
@@ -204,4 +213,4 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         borderTopLeftRadius: theme.borderRadii.xl,
     },
-});
+}));

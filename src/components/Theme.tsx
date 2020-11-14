@@ -1,4 +1,4 @@
-import { createTheme } from "@shopify/restyle";
+import { createTheme, useTheme as useReTheme } from "@shopify/restyle";
 
 const palette = {
     white: "white",
@@ -8,9 +8,11 @@ const theme = createTheme({
     colors: {
         primary: "#2CB9B0",
         secondary: "#0C0D34",
+        danger: "#FF0058",
         text: "rgba(12, 13, 52, 0.7)", // title with opacity = 0.7
         white: palette.white,
         grey: "rgba(12, 13, 52, 0.05)",
+        placeholder: "#151624",
     },
     spacing: {
         s: 8,
@@ -63,4 +65,5 @@ const theme = createTheme({
 });
 
 export type Theme = typeof theme;
+export const useTheme = () => useReTheme<Theme>();
 export default theme;

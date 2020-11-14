@@ -6,11 +6,10 @@ import {
     spacing,
     SpacingProps,
     useRestyle,
-    useTheme,
     layout,
     LayoutProps,
 } from "@shopify/restyle";
-import { Theme } from "./Theme";
+import { useTheme, Theme } from "./Theme";
 
 import Text from "./Text";
 
@@ -25,7 +24,7 @@ type Props = SpacingProps<Theme> &
 
 const Button = ({ variant, label, onPress, children, ...rest }: Props) => {
     const props = useRestyle(restyleFunctions, rest);
-    const { colors } = useTheme<Theme>();
+    const { colors } = useTheme();
     const backgroundColor =
         variant === "primary"
             ? colors.primary

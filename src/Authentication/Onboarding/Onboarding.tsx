@@ -136,6 +136,7 @@ const Onboarding = ({
                             transform: [{ translateX: multiply(x, -1) }],
                             flex: 1,
                             flexDirection: "row",
+                            marginTop: 20,
                         }}
                     >
                         {slides.map(({ subtitle, description }, index) => {

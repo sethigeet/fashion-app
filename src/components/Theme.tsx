@@ -7,9 +7,8 @@ const palette = {
 const theme = createTheme({
     colors: {
         primary: "#2CB9B0",
-        title: "#0C0D34",
+        secondary: "#0C0D34",
         text: "rgba(12, 13, 52, 0.7)", // title with opacity = 0.7
-        buttonText: "#0C0D34",
         white: palette.white,
         grey: "rgba(12, 13, 52, 0.05)",
     },
@@ -20,6 +19,7 @@ const theme = createTheme({
         xl: 40,
     },
     borderRadii: {
+        none: 0,
         s: 4,
         m: 10,
         l: 25,
@@ -36,13 +36,13 @@ const theme = createTheme({
         title1: {
             fontSize: 28,
             fontFamily: "SFProDisplay-SemiBold",
-            color: "title",
+            color: "secondary",
         },
         title2: {
             fontSize: 24,
             lineHeight: 30,
             fontFamily: "SFProDisplay-SemiBold",
-            color: "title",
+            color: "secondary",
         },
         body: {
             fontSize: 16,
@@ -53,7 +53,7 @@ const theme = createTheme({
         buttonText: {
             fontSize: 15,
             fontFamily: "SFProDisplay-Medium",
-            color: "buttonText",
+            color: "secondary",
         },
     },
     breakpoints: {

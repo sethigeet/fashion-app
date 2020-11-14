@@ -1,20 +1,29 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { StyleSheet, View } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 
-import { spacing, SpacingProps, useRestyle, useTheme } from "@shopify/restyle";
+import {
+    spacing,
+    SpacingProps,
+    useRestyle,
+    useTheme,
+    layout,
+    LayoutProps,
+} from "@shopify/restyle";
 import { Theme } from "./Theme";
 
 import Text from "./Text";
 
-const restyleFunctions = [spacing];
-type Props = SpacingProps<Theme> & {
-    variant: "default" | "primary" | "transparent";
-    label: string;
-    onPress: () => void;
-};
+const restyleFunctions = [spacing, layout];
+type Props = SpacingProps<Theme> &
+    LayoutProps<Theme> & {
+        variant: "default" | "primary" | "transparent";
+        label?: string;
+        onPress: () => void;
+        children?: ReactNode;
+    };
 
-const Button = ({ variant, label, onPress, ...rest }: Props) => {
+const Button = ({ variant, label, onPress, children, ...rest }: Props) => {
     const props = useRestyle(restyleFunctions, rest);
     const { colors } = useTheme<Theme>();
     const backgroundColor =
@@ -23,7 +32,7 @@ const Button = ({ variant, label, onPress, ...rest }: Props) => {
             : variant === "default"
             ? colors.grey
             : "transparent";
-    const color = variant === "primary" ? colors.white : colors.buttonText;
+    const color = variant === "primary" ? colors.white : colors.secondary;
 
     return (
         <View {...props}>
@@ -31,9 +40,13 @@ const Button = ({ variant, label, onPress, ...rest }: Props) => {
                 style={[styles.container, { backgroundColor }]}
                 {...{ onPress }}
             >
-                <Text variant="buttonText" style={{ color }}>
-                    {label}
-                </Text>
+                {children ? (
+                    children
+                ) : (
+                    <Text variant="buttonText" style={{ color }}>
+                        {label}
+                    </Text>
+                )}
             </RectButton>
         </View>
     );

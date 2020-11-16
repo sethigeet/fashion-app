@@ -4,7 +4,7 @@ import { Dimensions } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import theme from "./Theme";
+import { Theme } from "./Theme";
 import Box from "./Box";
 
 // import Constants from "expo-constants";
@@ -14,10 +14,10 @@ const { width, height } = Dimensions.get("window");
 interface Props {
     top: boolean;
     topCurve: "left" | "right" | "none";
-    topColor: keyof typeof theme.colors;
+    topColor: keyof Theme["colors"];
     bottom: boolean;
     bottomCurve: "left" | "right" | "none";
-    bottomColor: keyof typeof theme.colors;
+    bottomColor: keyof Theme["colors"];
     header?: ReactNode;
     children?: ReactNode;
     footer?: ReactNode;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RectButton } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { Feather as Icon } from "@expo/vector-icons";
 
@@ -24,7 +24,7 @@ const Checkbox = ({ label, checked, onChange }: Props) => {
     const SIZE = theme.borderRadii.m * 2;
 
     return (
-        <RectButton onPress={onChange}>
+        <TouchableOpacity onPress={onChange}>
             <Box flexDirection="row" alignItems="center">
                 <Box
                     width={SIZE}
@@ -49,7 +49,7 @@ const Checkbox = ({ label, checked, onChange }: Props) => {
                     {label}
                 </Text>
             </Box>
-        </RectButton>
+        </TouchableOpacity>
     );
 };
 

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 
@@ -16,21 +16,16 @@ import Text from "./Text";
 const restyleFunctions = [spacing, layout];
 type Props = SpacingProps<Theme> &
     LayoutProps<Theme> & {
-        variant: "default" | "primary" | "transparent";
+        variant: "default" | "primary";
         label?: string;
         onPress: () => void;
-        children?: ReactNode;
     };
 
-const Button = ({ variant, label, onPress, children, ...rest }: Props) => {
+const Button = ({ variant, label, onPress, ...rest }: Props) => {
     const props = useRestyle(restyleFunctions, rest);
     const { colors } = useTheme();
     const backgroundColor =
-        variant === "primary"
-            ? colors.primary
-            : variant === "default"
-            ? colors.grey
-            : "transparent";
+        variant === "primary" ? colors.primary : colors.grey;
     const color = variant === "primary" ? colors.white : colors.secondary;
 
     return (
@@ -39,13 +34,9 @@ const Button = ({ variant, label, onPress, children, ...rest }: Props) => {
                 style={[styles.container, { backgroundColor }]}
                 {...{ onPress }}
             >
-                {children ? (
-                    children
-                ) : (
-                    <Text variant="buttonText" style={{ color }}>
-                        {label}
-                    </Text>
-                )}
+                <Text variant="buttonText" style={{ color }}>
+                    {label}
+                </Text>
             </RectButton>
         </View>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Dimensions, Image, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 import {
     Box,
@@ -76,14 +77,14 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
                     <Button
                         variant="default"
                         label="Join us, it's Free"
-                        onPress={() => {}}
+                        onPress={() => navigation.navigate("SignUp")}
                         marginBottom="s"
                     />
-                    <Button
-                        variant="transparent"
-                        label="Forgot Password?"
-                        onPress={() => {}}
-                    />
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("ForgotPassword")}
+                    >
+                        <Text variant="buttonText">Forgot Password?</Text>
+                    </TouchableOpacity>
                 </Box>
             </Box>
         </Box>

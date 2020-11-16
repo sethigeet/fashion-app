@@ -8,11 +8,12 @@ const palette = {
 const theme = createTheme({
     colors: {
         primary: "#2CB9B0",
+        primaryLight: "rgba(44, 185, 176, 0.1)", // primary with opacity = 0.1
         secondary: "#0C0D34",
         danger: "#FF0058",
-        text: "rgba(12, 13, 52, 0.7)", // title with opacity = 0.7
+        text: "rgba(12, 13, 52, 0.7)", // secondary with opacity = 0.7
         white: palette.white,
-        grey: "rgba(12, 13, 52, 0.05)",
+        grey: "rgba(12, 13, 52, 0.05)", // secondary with opacity = 0.5
         placeholder: "#151624",
     },
     spacing: {

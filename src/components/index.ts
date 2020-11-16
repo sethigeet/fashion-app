@@ -6,3 +6,5 @@ export { default as Box } from "./Box";
 export { Routes, StackNavigationProps } from "./Navigation";
 export { default as Container } from "./Container";
 export * from "./Form";
+export { default as RoundedIcon } from "./RoundedIcon";
+export { default as RoundedIconButton } from "./RoundedIconButton";

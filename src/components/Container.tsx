@@ -1,9 +1,13 @@
 import React, { ReactNode } from "react";
-import { Dimensions, StatusBar, StyleSheet } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Dimensions } from "react-native";
 
-import theme, { useTheme } from "./Theme";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+
+import theme from "./Theme";
 import Box from "./Box";
+
+// import Constants from "expo-constants";
 
 const { width, height } = Dimensions.get("window");
 
@@ -31,79 +35,85 @@ const Container = ({
     footer,
 }: Props) => {
     const insets = useSafeAreaInsets();
-    const theme = useTheme();
 
     return (
-        <Box flex={1} bg="secondary">
-            <StatusBar
-                barStyle="light-content"
-                backgroundColor={theme.colors[topColor]}
-            />
-
-            {top ? (
-                <Box bg="white">
-                    <Box
-                        width={width}
-                        height={height * 0.15}
-                        borderBottomRightRadius={
-                            topCurve === "right" ? "xl" : "none"
-                        }
-                        borderBottomLeftRadius={
-                            topCurve === "left" ? "xl" : "none"
-                        }
-                        bg={topColor}
-                    >
-                        {header}
+        <KeyboardAwareScrollView scrollEnabled={false}>
+            <Box
+                height={
+                    height
+                    // + (Platform.OS === "android" ? Constants.statusBarHeight : 0)
+                }
+                bg="secondary"
+            >
+                {top ? (
+                    <Box bg="white">
+                        <Box
+                            width={width}
+                            height={height * 0.15}
+                            borderBottomRightRadius={
+                                topCurve === "right" ? "xl" : "none"
+                            }
+                            borderBottomLeftRadius={
+                                topCurve === "left" ? "xl" : "none"
+                            }
+                            bg={topColor}
+                        >
+                            {header}
+                        </Box>
                     </Box>
-                </Box>
-            ) : null}
+                ) : null}
 
-            <Box flex={1} overflow="hidden">
-                <Box
-                    width={width}
-                    height={height * 0.2}
-                    position="absolute"
-                    top={0}
-                    bottom={0}
-                    left={0}
-                    right={0}
-                    bg={topColor}
-                />
-                <Box
-                    flex={1}
-                    bg="white"
-                    borderTopRightRadius={topCurve === "right" ? "none" : "xl"}
-                    borderTopLeftRadius={topCurve === "left" ? "none" : "xl"}
-                    borderBottomRightRadius={
-                        bottomCurve === "right" ? "none" : "xl"
-                    }
-                    borderBottomLeftRadius={
-                        bottomCurve === "left" ? "none" : "xl"
-                    }
-                >
-                    {children}
-                </Box>
-            </Box>
-
-            {bottom ? (
-                <Box bg="white">
+                <Box flex={1} overflow="hidden">
                     <Box
                         width={width}
+                        height={height * 0.2}
+                        position="absolute"
+                        top={0}
+                        bottom={0}
+                        left={0}
+                        right={0}
+                        bg={topColor}
+                    />
+                    <Box
+                        flex={1}
+                        bg="white"
                         borderTopRightRadius={
-                            bottomCurve === "right" ? "xl" : "none"
+                            topCurve === "right" ? "none" : "xl"
                         }
                         borderTopLeftRadius={
-                            bottomCurve === "left" ? "xl" : "none"
+                            topCurve === "left" ? "none" : "xl"
                         }
-                        bg={bottomColor}
-                        pt="m"
-                        style={{ paddingBottom: insets.bottom }}
+                        borderBottomRightRadius={
+                            bottomCurve === "right" ? "none" : "xl"
+                        }
+                        borderBottomLeftRadius={
+                            bottomCurve === "left" ? "none" : "xl"
+                        }
                     >
-                        {footer}
+                        {children}
                     </Box>
                 </Box>
-            ) : null}
-        </Box>
+
+                {bottom ? (
+                    <Box bg="white">
+                        <Box
+                            width={width}
+                            borderTopRightRadius={
+                                bottomCurve === "right" ? "xl" : "none"
+                            }
+                            borderTopLeftRadius={
+                                bottomCurve === "left" ? "xl" : "none"
+                            }
+                            bg={bottomColor}
+                            pt="m"
+                            style={{ paddingBottom: insets.bottom }}
+                        >
+                            {footer}
+                        </Box>
+                    </Box>
+                ) : null}
+            </Box>
+        </KeyboardAwareScrollView>
     );
 };
 
@@ -117,5 +127,3 @@ Container.defaultProps = {
 };
 
 export default Container;
-
-const styles = StyleSheet.create({});

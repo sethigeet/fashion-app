@@ -1,4 +1,5 @@
 import React from "react";
+import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "@shopify/restyle";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -20,6 +21,7 @@ export default function App() {
     return (
         <ThemeProvider {...{ theme }}>
             <LoadAssets {...{ fonts, assets }}>
+                <StatusBar style="light" />
                 <SafeAreaProvider>
                     <AuthenticationNavigator />
                 </SafeAreaProvider>

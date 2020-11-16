@@ -1,7 +1,8 @@
 import React from "react";
 
 import { createStackNavigator } from "@react-navigation/stack";
-import { Routes } from "../components";
+
+import { AuthenticationRoutes } from "../components";
 
 import Onboarding from "./Onboarding";
 import Welcome from "./Welcome";
@@ -15,7 +16,7 @@ import { assets as welcomeAssets } from "./Welcome";
 
 export const assets = [...onboardingAssets, ...welcomeAssets];
 
-const AuthenticationStack = createStackNavigator<Routes>();
+const AuthenticationStack = createStackNavigator<AuthenticationRoutes>();
 export const AuthenticationNavigator = () => (
     <AuthenticationStack.Navigator headerMode="none">
         <AuthenticationStack.Screen name="Onboarding" component={Onboarding} />

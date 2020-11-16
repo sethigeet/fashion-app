@@ -9,8 +9,7 @@ import {
     Container,
     Button,
     TextInput,
-    Routes,
-    StackNavigationProps,
+    AuthNavigationProps,
 } from "./../components";
 
 import { useFormik } from "formik";
@@ -27,7 +26,7 @@ const SignUpSchema = Yup.object().shape({
         .equals([Yup.ref("password")], "Passwords must match!"),
 });
 
-const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
+const SignUp = ({ navigation }: AuthNavigationProps<"SignUp">) => {
     const {
         handleChange,
         handleBlur,

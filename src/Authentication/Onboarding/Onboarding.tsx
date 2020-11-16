@@ -13,8 +13,7 @@ import SubSlide from "./SubSlide";
 import Dot from "./Dot";
 
 import {
-    Routes,
-    StackNavigationProps,
+    AuthNavigationProps,
     Theme,
     useTheme,
     makeStyles,
@@ -59,9 +58,7 @@ const slides = [
 
 export const assets = [slides.map(({ picture: { src } }) => src)];
 
-const Onboarding = ({
-    navigation,
-}: StackNavigationProps<Routes, "Onboarding">) => {
+const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
     const scrollRef = useRef(null);
     const { scrollHandler, x } = useScrollHandler();
     const backgroundColor = interpolateColor(x, {

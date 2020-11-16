@@ -10,8 +10,7 @@ import {
     Button,
     TextInput,
     Checkbox,
-    StackNavigationProps,
-    Routes,
+    AuthNavigationProps,
 } from "./../components";
 
 import { useFormik } from "formik";
@@ -26,7 +25,7 @@ const LoginSchema = Yup.object().shape({
     password: Yup.string().required("This field is required!"),
 });
 
-const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
+const Login = ({ navigation }: AuthNavigationProps<"Login">) => {
     const {
         handleChange,
         handleBlur,
@@ -37,7 +36,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
         setFieldValue,
     } = useFormik({
         initialValues: initialLoginValues,
-        onSubmit: (values) => console.log(values),
+        onSubmit: () => navigation.navigate("Home"),
         validationSchema: LoginSchema,
     });
     const passwordInput = useRef<RNTextInput>(null);

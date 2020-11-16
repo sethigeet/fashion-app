@@ -5,15 +5,14 @@ import {
     Text,
     Container,
     Button,
-    Routes,
-    StackNavigationProps,
+    AuthNavigationProps,
     RoundedIcon,
     RoundedIconButton,
 } from "./../components";
 
 const PasswordChanged = ({
     navigation,
-}: StackNavigationProps<Routes, "PasswordChanged">) => {
+}: AuthNavigationProps<"PasswordChanged">) => {
     const SIZE = 80;
 
     return (

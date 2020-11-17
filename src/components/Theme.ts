@@ -2,7 +2,11 @@ import { ImageStyle, TextStyle, ViewStyle } from "react-native";
 import { createTheme, useTheme as useReTheme } from "@shopify/restyle";
 
 const palette = {
-    white: "white",
+    white: "#FFFFFF",
+    orange: "#FE5E33",
+    yellow: "#FFC641",
+    pink: "#FF87A2",
+    violet: "#442CB9",
 };
 
 const theme = createTheme({
@@ -12,9 +16,13 @@ const theme = createTheme({
         secondary: "#0C0D34",
         danger: "#FF0058",
         text: "rgba(12, 13, 52, 0.7)", // secondary with opacity = 0.7
-        white: palette.white,
         grey: "rgba(12, 13, 52, 0.05)", // secondary with opacity = 0.5
         placeholder: "#151624",
+        white: palette.white,
+        orange: palette.orange,
+        yellow: palette.yellow,
+        pink: palette.pink,
+        violet: palette.violet,
     },
     spacing: {
         s: 8,
@@ -57,6 +65,12 @@ const theme = createTheme({
         buttonText: {
             fontSize: 15,
             fontFamily: "SFProDisplay-Medium",
+            color: "secondary",
+        },
+        header: {
+            fontSize: 12,
+            lineHeight: 24,
+            fontFamily: "SFProDisplay-SemiBold",
             color: "secondary",
         },
     },

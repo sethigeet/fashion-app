@@ -1,0 +1,133 @@
+import React from "react";
+import { Dimensions } from "react-native";
+
+import {
+    DrawerContentComponentProps,
+    DrawerContentOptions,
+} from "@react-navigation/drawer";
+
+import { Box, Header, Text } from "../../components";
+
+import DrawerItem, { Props as DrawerItemProps } from "./DrawerItem";
+
+const { width } = Dimensions.get("window");
+export const DRAWER_WIDTH = width * 0.8;
+
+const items: DrawerItemProps[] = [
+    {
+        icon: "zap",
+        label: "Outfit Ideas",
+        screen: "OutfitIdeas",
+        color: "primary",
+    },
+    {
+        icon: "heart",
+        label: "Favourite Outfits",
+        screen: "FavouriteOutfits",
+        color: "orange",
+    },
+    {
+        icon: "user",
+        label: "Edit Profile",
+        screen: "EditProfile",
+        color: "yellow",
+    },
+    {
+        icon: "clock",
+        label: "Transaction History",
+        screen: "TransactionHistory",
+        color: "pink",
+    },
+    {
+        icon: "settings",
+        label: "Notifications Settings",
+        screen: "NotificationsSettings",
+        color: "violet",
+    },
+    {
+        icon: "log-out",
+        label: "Logout",
+        screen: "Logout",
+        color: "secondary",
+    },
+];
+
+const DrawerContent = (
+    props: DrawerContentComponentProps<DrawerContentOptions>
+) => {
+    return (
+        <Box flex={1}>
+            <Box flex={0.2} bg="white">
+                <Box
+                    position="absolute"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    borderBottomRightRadius="xl"
+                    bg="secondary"
+                >
+                    <Header
+                        left={{ icon: "x", onPress: () => {} }}
+                        right={{ icon: "shopping-bag", onPress: () => {} }}
+                        title="Menu"
+                    />
+                </Box>
+            </Box>
+            <Box flex={0.7}>
+                <Box bg="secondary" flex={1} />
+                <Box bg="primary" flex={1} />
+                <Box
+                    position="absolute"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    borderTopLeftRadius="xl"
+                    borderBottomRightRadius="xl"
+                    bg="white"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Box
+                        position="absolute"
+                        left={(DRAWER_WIDTH - 100) / 2}
+                        right={0}
+                        top={-50}
+                        bg="primary"
+                        height={100}
+                        width={100}
+                        style={{ borderRadius: 50 }}
+                        alignSelf="center"
+                    />
+                    <Box style={{ marginTop: 50 }}>
+                        <Text variant="title1" textAlign="center">
+                            Mike Peter
+                        </Text>
+                        <Text variant="body" textAlign="center">
+                            mike@flexinstudios.com
+                        </Text>
+                    </Box>
+                    <Box>
+                        {items.map((item, index) => (
+                            <DrawerItem key={index} {...item} />
+                        ))}
+                    </Box>
+                </Box>
+            </Box>
+            <Box flex={0.1}>
+                <Box
+                    position="absolute"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    borderTopLeftRadius="xl"
+                    bg="primary"
+                />
+            </Box>
+        </Box>
+    );
+};
+
+export default DrawerContent;

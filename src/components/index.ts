@@ -8,3 +8,4 @@ export { default as Container } from "./Container";
 export * from "./Form";
 export { default as RoundedIcon } from "./RoundedIcon";
 export { default as RoundedIconButton } from "./RoundedIconButton";
+export { default as Header } from "./Header";

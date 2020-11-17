@@ -11,7 +11,7 @@ const HomeDrawer = createDrawerNavigator<HomeRoutes>();
 export const HomeNavigator = () => {
     return (
         <HomeDrawer.Navigator
-            drawerContent={() => <DrawerContent />}
+            drawerContent={DrawerContent}
             drawerStyle={{
                 width: DRAWER_WIDTH,
             }}

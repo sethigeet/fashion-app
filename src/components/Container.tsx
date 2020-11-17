@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -67,11 +67,7 @@ const Container = ({
                     <Box
                         width={width}
                         height={height * 0.2}
-                        position="absolute"
-                        top={0}
-                        bottom={0}
-                        left={0}
-                        right={0}
+                        style={StyleSheet.absoluteFillObject}
                         bg={topColor}
                     />
                     <Box

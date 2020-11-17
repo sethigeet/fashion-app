@@ -5,10 +5,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import {
     Box,
     Button,
-    StackNavigationProps,
+    AuthNavigationProps,
     Text,
     useTheme,
-    AuthenticationRoutes,
 } from "../components";
 
 const { width } = Dimensions.get("window");
@@ -21,9 +20,7 @@ const picture = {
 
 export const assets = [picture.src];
 
-const Welcome = ({
-    navigation,
-}: StackNavigationProps<AuthenticationRoutes, "Welcome">) => {
+const Welcome = ({ navigation }: AuthNavigationProps<"Welcome">) => {
     const theme = useTheme();
 
     return (
@@ -47,14 +44,7 @@ const Welcome = ({
                 />
             </Box>
             <Box flex={1} borderTopLeftRadius="xl">
-                <Box
-                    bg="grey"
-                    position="absolute"
-                    top={0}
-                    right={0}
-                    bottom={0}
-                    left={0}
-                />
+                <Box bg="grey" style={StyleSheet.absoluteFillObject} />
                 <Box
                     bg="white"
                     borderTopLeftRadius="xl"

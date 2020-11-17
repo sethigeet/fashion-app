@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 import {
     DrawerContentComponentProps,
@@ -52,25 +52,26 @@ const items: DrawerItemProps[] = [
     },
 ];
 
-const DrawerContent = (
-    props: DrawerContentComponentProps<DrawerContentOptions>
-) => {
+const DrawerContent = ({
+    navigation,
+}: DrawerContentComponentProps<DrawerContentOptions>) => {
     return (
         <Box flex={1}>
             <Box flex={0.2} bg="white">
                 <Box
-                    position="absolute"
-                    top={0}
-                    left={0}
-                    right={0}
-                    bottom={0}
+                    style={StyleSheet.absoluteFillObject}
                     borderBottomRightRadius="xl"
                     bg="secondary"
                 >
                     <Header
-                        left={{ icon: "x", onPress: () => {} }}
+                        left={{
+                            icon: "x",
+                            onPress: () => navigation.closeDrawer(),
+                        }}
                         right={{ icon: "shopping-bag", onPress: () => {} }}
                         title="Menu"
+                        iconBackground="secondary"
+                        color="white"
                     />
                 </Box>
             </Box>
@@ -78,11 +79,7 @@ const DrawerContent = (
                 <Box bg="secondary" flex={1} />
                 <Box bg="primary" flex={1} />
                 <Box
-                    position="absolute"
-                    top={0}
-                    left={0}
-                    right={0}
-                    bottom={0}
+                    style={StyleSheet.absoluteFillObject}
                     borderTopLeftRadius="xl"
                     borderBottomRightRadius="xl"
                     bg="white"
@@ -117,11 +114,7 @@ const DrawerContent = (
             </Box>
             <Box flex={0.1}>
                 <Box
-                    position="absolute"
-                    top={0}
-                    left={0}
-                    right={0}
-                    bottom={0}
+                    style={StyleSheet.absoluteFillObject}
                     borderTopLeftRadius="xl"
                     bg="primary"
                 />

@@ -8,6 +8,8 @@ import DrawerContent, { DRAWER_WIDTH } from "./Drawer";
 import OutfitIdeas from "./OutfitIdeas";
 import FavouriteOutfits from "./FavouriteOutfits";
 import TransactionHistory from "./TransactionHistory";
+import EditProfile from "./EditProfile";
+import NotificationsSettings from "./NotificationsSettings";
 
 const HomeDrawer = createDrawerNavigator<HomeRoutes>();
 export const HomeNavigator = () => {
@@ -26,6 +28,11 @@ export const HomeNavigator = () => {
             <HomeDrawer.Screen
                 name="TransactionHistory"
                 component={TransactionHistory}
+            />
+            <HomeDrawer.Screen name="EditProfile" component={EditProfile} />
+            <HomeDrawer.Screen
+                name="NotificationsSettings"
+                component={NotificationsSettings}
             />
         </HomeDrawer.Navigator>
     );

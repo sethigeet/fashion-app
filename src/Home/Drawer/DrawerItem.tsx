@@ -2,7 +2,6 @@ import React from "react";
 
 import {
     Box,
-    HomeNavigationProps,
     HomeRoutes,
     RoundedIcon,
     Text,
@@ -17,22 +16,35 @@ import {
     useRoute,
 } from "@react-navigation/native";
 
-export interface Props {
+interface BaseDrawerItem {
     icon: string;
     label: string;
-    screen: keyof HomeRoutes;
     color: keyof Theme["colors"];
 }
+interface ScreenDrawerItem extends BaseDrawerItem {
+    screen: keyof HomeRoutes;
+}
+interface OnPressDrawerItem extends BaseDrawerItem {
+    onPress: (navigation: ReturnType<typeof useNavigation>) => void;
+}
+export type Props = ScreenDrawerItem | OnPressDrawerItem;
 
-const DrawerItem = ({ icon, label, color, screen }: Props) => {
+const DrawerItem = ({ icon, label, color, ...props }: Props) => {
     const theme = useTheme();
     const focusedRoute = getFocusedRouteNameFromRoute(useRoute());
     const navigation = useNavigation();
-    const isFocused = screen === focusedRoute;
+    const isFocused = props.screen ? props.screen === focusedRoute : false;
 
     return (
         <RectButton
-            onPress={() => navigation.navigate(screen)}
+            onPress={() => {
+                if (props.onPress) {
+                    props.onPress(navigation);
+                }
+                if (props.screen) {
+                    navigation.navigate(props.screen);
+                }
+            }}
             style={{
                 borderRadius: theme.borderRadii.m,
                 backgroundColor: isFocused

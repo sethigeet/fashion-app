@@ -9,6 +9,7 @@ import {
 import { Box, Header, Text } from "../../components";
 
 import DrawerItem, { Props as DrawerItemProps } from "./DrawerItem";
+import { CommonActions } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 export const DRAWER_WIDTH = width * 0.8;
@@ -47,7 +48,13 @@ const items: DrawerItemProps[] = [
     {
         icon: "log-out",
         label: "Logout",
-        screen: "Logout",
+        onPress: (navigation) =>
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: "Authentication" }],
+                })
+            ),
         color: "secondary",
     },
 ];

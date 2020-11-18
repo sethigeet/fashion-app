@@ -97,7 +97,7 @@ const ForgotPassword = ({
                         }
                     >
                         <Text variant="buttonText">
-                            <Text color="text">Didn't work? </Text>
+                            <Text>Didn't work? </Text>
                             <Text color="primary">Try another way</Text>
                         </Text>
                     </TouchableOpacity>

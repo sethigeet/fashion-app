@@ -16,6 +16,7 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { CommonActions } from "@react-navigation/native";
 
 const initialLoginValues = { email: "", password: "", rememberMe: false };
 const LoginSchema = Yup.object().shape({
@@ -36,7 +37,13 @@ const Login = ({ navigation }: AuthNavigationProps<"Login">) => {
         setFieldValue,
     } = useFormik({
         initialValues: initialLoginValues,
-        onSubmit: () => navigation.navigate("Home"),
+        onSubmit: () =>
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: "Home" }],
+                })
+            ),
         validationSchema: LoginSchema,
     });
     const passwordInput = useRef<RNTextInput>(null);

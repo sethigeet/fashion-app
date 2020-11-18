@@ -6,6 +6,7 @@ import { HomeRoutes } from "../components";
 
 import DrawerContent, { DRAWER_WIDTH } from "./Drawer";
 import OutfitIdeas from "./OutfitIdeas";
+import FavouriteOutfits from "./FavouriteOutfits";
 
 const HomeDrawer = createDrawerNavigator<HomeRoutes>();
 export const HomeNavigator = () => {
@@ -17,6 +18,10 @@ export const HomeNavigator = () => {
             }}
         >
             <HomeDrawer.Screen name="OutfitIdeas" component={OutfitIdeas} />
+            <HomeDrawer.Screen
+                name="FavouriteOutfits"
+                component={FavouriteOutfits}
+            />
         </HomeDrawer.Navigator>
     );
 };

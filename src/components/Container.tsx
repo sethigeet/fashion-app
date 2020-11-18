@@ -43,7 +43,7 @@ const Container = ({
                     height
                     // + (Platform.OS === "android" ? Constants.statusBarHeight : 0)
                 }
-                bg="secondary"
+                bg={bottomColor}
             >
                 {top ? (
                     <Box bg="white">
@@ -74,17 +74,30 @@ const Container = ({
                         flex={1}
                         bg="white"
                         borderTopRightRadius={
-                            topCurve === "right" ? "none" : "xl"
+                            top
+                                ? topCurve === "right"
+                                    ? "none"
+                                    : "xl"
+                                : "none"
                         }
                         borderTopLeftRadius={
-                            topCurve === "left" ? "none" : "xl"
+                            top ? (topCurve === "left" ? "none" : "xl") : "none"
                         }
                         borderBottomRightRadius={
-                            bottomCurve === "right" ? "none" : "xl"
+                            bottom
+                                ? bottomCurve === "right"
+                                    ? "none"
+                                    : "xl"
+                                : "none"
                         }
                         borderBottomLeftRadius={
-                            bottomCurve === "left" ? "none" : "xl"
+                            bottom
+                                ? bottomCurve === "left"
+                                    ? "none"
+                                    : "xl"
+                                : "none"
                         }
+                        overflow="hidden"
                     >
                         {children}
                     </Box>

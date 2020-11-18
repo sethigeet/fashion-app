@@ -18,7 +18,7 @@ const Footer = ({ onPress, label }: Props) => {
             borderTopLeftRadius="xl"
             // style={{ paddingBottom: insets.bottom }}
         >
-            <Button variant="primary" {...{ label, onPress }} />
+            <Button variant="primary" label={label} onPress={onPress} />
         </Box>
     );
 };

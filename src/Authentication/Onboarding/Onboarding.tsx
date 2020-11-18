@@ -110,11 +110,11 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
                     bounces={false}
                     {...scrollHandler}
                 >
-                    {slides.map(({ title, picture }, index) => (
+                    {slides.map(({ title }, index) => (
                         <Slide
                             key={index}
                             right={index % 2 !== 0}
-                            {...{ title, picture }}
+                            title={title}
                         />
                     ))}
                 </Animated.ScrollView>
@@ -132,7 +132,7 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
                             <Dot
                                 key={index}
                                 currentIndex={divide(x, width)}
-                                {...{ index }}
+                                index={index}
                             />
                         ))}
                     </View>
@@ -161,12 +161,10 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
                             return (
                                 <SubSlide
                                     key={index}
-                                    {...{
-                                        subtitle,
-                                        description,
-                                        onPress,
-                                        last,
-                                    }}
+                                    subtitle={subtitle}
+                                    description={description}
+                                    onPress={onPress}
+                                    last={last}
                                 />
                             );
                         })}

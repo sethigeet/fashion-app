@@ -50,8 +50,8 @@ const TextInput = forwardRef<RNTextInput, Props>(
                         underlineColorAndroid="transparent"
                         placeholderTextColor={theme.colors.placeholder}
                         style={{ fontFamily: "SFProDisplay-Regular" }}
+                        ref={ref}
                         {...props}
-                        {...{ ref }}
                     />
                 </Box>
                 {touched && (

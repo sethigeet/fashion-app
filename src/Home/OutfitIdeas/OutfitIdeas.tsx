@@ -55,7 +55,8 @@ const OutfitIdeas = ({ navigation }: HomeNavigationProps<"OutfitIdeas">) => {
                                         (prevIndex) => prevIndex + step
                                     )
                                 }
-                                {...{ picture, step }}
+                                picture={picture}
+                                step={step}
                             />
                         )
                 )}

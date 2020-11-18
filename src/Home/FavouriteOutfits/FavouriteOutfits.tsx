@@ -2,11 +2,10 @@ import React, { useRef, useState } from "react";
 import { Dimensions, ScrollView } from "react-native";
 import {
     Box,
-    Button,
-    Container,
     Header,
     HomeNavigationProps,
     useTheme,
+    TopRightCurve,
 } from "../../components";
 
 import {
@@ -17,7 +16,6 @@ import {
 
 import Outfit from "./Outfit";
 import Footer from "./Footer";
-import TopCurve from "./TopCurve";
 
 const { width } = Dimensions.get("window");
 
@@ -112,7 +110,7 @@ const FavouriteOutfits = ({
                                     <Outfit
                                         key={outfit.id}
                                         width={CARD_WIDTH}
-                                        {...{ outfit }}
+                                        outfit={outfit}
                                     />
                                 ))}
                         </Box>
@@ -123,14 +121,14 @@ const FavouriteOutfits = ({
                                     <Outfit
                                         key={outfit.id}
                                         width={CARD_WIDTH}
-                                        {...{ outfit }}
+                                        outfit={outfit}
                                     />
                                 ))}
                         </Box>
                     </Box>
                 </Transitioning.View>
             </ScrollView>
-            <TopCurve footerHeight={footerHeight} />
+            <TopRightCurve footerHeight={footerHeight} color="secondary" />
             <Box
                 position="absolute"
                 bottom={0}

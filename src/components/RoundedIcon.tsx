@@ -31,7 +31,7 @@ const RoundedIcon = ({
             alignItems="center"
             justifyContent="center"
         >
-            <Icon size={size * iconRatio} color={colors[color]} {...{ name }} />
+            <Icon size={size * iconRatio} color={colors[color]} name={name} />
         </Box>
     );
 };

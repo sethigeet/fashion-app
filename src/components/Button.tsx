@@ -32,7 +32,7 @@ const Button = ({ variant, label, onPress, ...rest }: Props) => {
         <View {...props}>
             <RectButton
                 style={[styles.container, { backgroundColor }]}
-                {...{ onPress }}
+                onPress={onPress}
             >
                 <Text variant="buttonText" style={{ color }}>
                     {label}

@@ -25,8 +25,8 @@ const AppStack = createStackNavigator<AppRoutes>();
 
 export default function App() {
     return (
-        <ThemeProvider {...{ theme }}>
-            <LoadAssets {...{ fonts, assets }}>
+        <ThemeProvider theme={theme}>
+            <LoadAssets fonts={fonts} assets={assets}>
                 <StatusBar style="light" />
                 <SafeAreaProvider>
                     <AppStack.Navigator headerMode="none">

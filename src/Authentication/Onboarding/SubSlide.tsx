@@ -21,7 +21,7 @@ const SubSlide = ({ subtitle, description, last, onPress }: Props) => {
             <Button
                 label={last ? "Let's Get Started" : "Next"}
                 variant={last ? "primary" : "default"}
-                {...{ onPress }}
+                onPress={onPress}
             />
         </Box>
     );

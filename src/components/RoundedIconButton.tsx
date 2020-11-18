@@ -11,7 +11,7 @@ const RoundedIconButton = ({ onPress, ...props }: Props) => {
     return (
         <BorderlessButton
             style={{ borderRadius: props.size / 2 }}
-            {...{ onPress }}
+            onPress={onPress}
         >
             <RoundedIcon {...props} />
         </BorderlessButton>

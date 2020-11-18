@@ -21,6 +21,7 @@ const theme = createTheme({
         placeholder: "#151624",
         white: palette.white,
         lightGrey: "#FAFAFA",
+        darkGrey: "#808080",
         orange: palette.orange,
         yellow: palette.yellow,
         pink: palette.pink,
@@ -56,6 +57,12 @@ const theme = createTheme({
         title2: {
             fontSize: 24,
             lineHeight: 30,
+            fontFamily: "SFProDisplay-SemiBold",
+            color: "secondary",
+        },
+        title3: {
+            fontSize: 16,
+            lineHeight: 20,
             fontFamily: "SFProDisplay-SemiBold",
             color: "secondary",
         },

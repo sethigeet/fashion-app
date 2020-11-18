@@ -1,12 +1,13 @@
 import React from "react";
 import Svg, { Path } from "react-native-svg";
-import { useTheme } from "../../components";
+import { Theme, useTheme } from "./Theme";
 
 interface Props {
     footerHeight: number;
+    color: keyof Theme["colors"];
 }
 
-const TopCurve = ({ footerHeight }: Props) => {
+const TopCurve = ({ footerHeight, color }: Props) => {
     const theme = useTheme();
 
     return (
@@ -22,7 +23,7 @@ const TopCurve = ({ footerHeight }: Props) => {
         >
             <Path
                 d="M 0 1 A 0 0, 0, 0, 0, 1 0 L 1 1"
-                fill={theme.colors.secondary}
+                fill={theme.colors[color]}
             />
         </Svg>
     );

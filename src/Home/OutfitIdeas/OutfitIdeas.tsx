@@ -39,7 +39,6 @@ const OutfitIdeas = ({ navigation }: HomeNavigationProps<"OutfitIdeas">) => {
                 left={{ icon: "menu", onPress: () => navigation.openDrawer() }}
                 right={{ icon: "shopping-bag", onPress: () => {} }}
                 title="Outifit Ideas"
-                iconBackground="lightGrey"
             />
             <Categories />
             <Box flex={1}>

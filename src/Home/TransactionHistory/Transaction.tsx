@@ -34,14 +34,14 @@ const Transaction = ({ transaction }: Props) => {
                 </Box>
                 <Box flexDirection="row">
                     <Text
-                        color="darkGrey"
+                        color="info"
                         fontSize={13}
                         fontFamily="SFProDisplay-Medium"
                     >
                         ${transaction.value}
                     </Text>
                     <Text
-                        color="darkGrey"
+                        color="info"
                         fontSize={13}
                         fontFamily="SFProDisplay-Medium"
                     >
@@ -49,7 +49,7 @@ const Transaction = ({ transaction }: Props) => {
                         -{" "}
                     </Text>
                     <Text
-                        color="darkGrey"
+                        color="info"
                         fontSize={13}
                         fontFamily="SFProDisplay-Medium"
                     >

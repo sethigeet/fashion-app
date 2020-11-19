@@ -44,11 +44,11 @@ const Axes = ({ minX, maxX, minY, maxY, step }: Props) => {
                         }}
                     >
                         <Box width={theme.spacing[AXES_MARGIN]} mr="s">
-                            <Text color="darkGrey" textAlign="right">
+                            <Text color="info" textAlign="right">
                                 {Math.round(lerp(minY, maxY, t))}
                             </Text>
                         </Box>
-                        <Box flex={1} height={2} bg="grey" />
+                        <Box flex={1} height={2} bg="background2" />
                     </Box>
                 ))}
             </Box>
@@ -63,7 +63,7 @@ const Axes = ({ minX, maxX, minY, maxY, step }: Props) => {
                     .map((_, i) => new Date(changeDateMonth(minX, i)).getTime())
                     .map((date, index) => (
                         <Box width={step} key={index}>
-                            <Text color="darkGrey" textAlign="center">
+                            <Text color="info" textAlign="center">
                                 {getMonthName(date)}
                             </Text>
                         </Box>

@@ -94,7 +94,6 @@ const FavouriteOutfits = ({
                 }}
                 right={{ icon: "shopping-bag", onPress: () => {} }}
                 title="Favourite Outfits"
-                iconBackground="lightGrey"
             />
             <ScrollView>
                 <Transitioning.View ref={list} transition={transition}>

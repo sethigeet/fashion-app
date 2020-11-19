@@ -25,7 +25,7 @@ const Button = ({ variant, label, onPress, ...rest }: Props) => {
     const props = useRestyle(restyleFunctions, rest);
     const { colors } = useTheme();
     const backgroundColor =
-        variant === "primary" ? colors.primary : colors.grey;
+        variant === "primary" ? colors.primary : colors.background2;
     const color = variant === "primary" ? colors.background : colors.secondary;
 
     return (

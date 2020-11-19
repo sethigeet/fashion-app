@@ -23,37 +23,37 @@ const data: DataPoint[] = [
         id: 123457,
         date: new Date("2019-09-01").getTime(),
         value: 139.42,
-        color: "violet",
+        color: "graph1",
     },
     {
         id: 123463,
         date: new Date("2019-10-01").getTime(),
         value: 198.54,
-        color: "danger",
+        color: "graph2",
     },
     {
         id: 123458,
         date: new Date("2019-11-01").getTime(),
         value: 139.42,
-        color: "primary",
+        color: "graph3",
     },
     {
         id: 123459,
         date: new Date("2019-12-01").getTime(),
         value: 281.23,
-        color: "orange",
+        color: "graph4",
     },
     {
         id: 123462,
         date: new Date("2020-01-01").getTime(),
         value: 198.54,
-        color: "pink",
+        color: "graph5",
     },
     {
         id: 123461,
         date: new Date("2020-02-01").getTime(),
         value: 198.54,
-        color: "yellow",
+        color: "graph6",
     },
 ];
 

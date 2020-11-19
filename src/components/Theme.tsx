@@ -14,25 +14,42 @@ export const palette = {
     pink: "#FF87A2",
     violet: "#442CB9",
     lightBlue: "#BFEAF5",
+    teal: "#2CB9B0",
+    lightTeal: "rgba(44, 185, 176, 0.1)", // teal with opacity = 0.1
+    navyBlue: "#0C0D34",
+    lightNavyBlue: "rgba(12, 13, 52, 0.7)", // secondary with opacity = 0.7
+    lightestNavyBlue: "rgba(12, 13, 52, 0.5)", // secondary with opacity = 0.5
+    reddishPink: "#FF0058",
+    grey: "#F4F0EF",
+    darkGrey: "#808080",
+    lightBlack: "#151624",
 };
 
 const theme = createTheme({
     colors: {
-        primary: "#2CB9B0",
-        primaryLight: "rgba(44, 185, 176, 0.1)", // primary with opacity = 0.1
-        secondary: "#0C0D34",
-        danger: "#FF0058",
-        text: "rgba(12, 13, 52, 0.7)", // secondary with opacity = 0.7
-        grey: "rgba(12, 13, 52, 0.05)", // secondary with opacity = 0.5
-        placeholder: "#151624",
+        primary: palette.teal,
+        primaryLight: palette.lightTeal,
+        secondary: palette.navyBlue,
+        danger: palette.reddishPink,
+        text: palette.lightNavyBlue,
+        placeholder: palette.lightBlack,
         background: palette.white,
-        lightGrey: "#FAFAFA",
-        darkGrey: "#808080",
-        orange: palette.orange,
-        yellow: palette.yellow,
-        pink: palette.pink,
-        violet: palette.violet,
-        lightBlue: palette.lightBlue,
+        info: palette.darkGrey,
+        background2: palette.grey,
+
+        graph1: palette.violet,
+        graph2: palette.reddishPink,
+        graph3: palette.teal,
+        graph4: palette.orange,
+        graph5: palette.pink,
+        graph6: palette.yellow,
+
+        drawer1: palette.teal,
+        drawer2: palette.orange,
+        drawer3: palette.yellow,
+        drawer4: palette.pink,
+        drawer5: palette.violet,
+        drawer6: palette.navyBlue,
     },
     spacing: {
         s: 8,

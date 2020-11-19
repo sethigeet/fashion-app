@@ -19,31 +19,31 @@ const items: DrawerItemProps[] = [
         icon: "zap",
         label: "Outfit Ideas",
         screen: "OutfitIdeas",
-        color: "primary",
+        color: "drawer1",
     },
     {
         icon: "heart",
         label: "Favourite Outfits",
         screen: "FavouriteOutfits",
-        color: "orange",
+        color: "drawer2",
     },
     {
         icon: "user",
         label: "Edit Profile",
         screen: "EditProfile",
-        color: "yellow",
+        color: "drawer3",
     },
     {
         icon: "clock",
         label: "Transaction History",
         screen: "TransactionHistory",
-        color: "pink",
+        color: "drawer4",
     },
     {
         icon: "settings",
         label: "Notifications Settings",
         screen: "NotificationsSettings",
-        color: "violet",
+        color: "drawer5",
     },
     {
         icon: "log-out",
@@ -55,7 +55,7 @@ const items: DrawerItemProps[] = [
                     routes: [{ name: "Authentication" }],
                 })
             ),
-        color: "secondary",
+        color: "drawer6",
     },
 ];
 

@@ -49,7 +49,7 @@ const DrawerItem = ({ icon, label, color, ...props }: Props) => {
                 borderRadius: theme.borderRadii.m,
                 backgroundColor: isFocused
                     ? theme.colors.primaryLight
-                    : theme.colors.background,
+                    : "transparent",
             }}
         >
             <Box flexDirection="row" alignItems="center" p="m">

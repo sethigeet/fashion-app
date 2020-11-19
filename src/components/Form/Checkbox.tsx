@@ -19,8 +19,8 @@ const Checkbox = ({ label, checked, onChange }: Props) => {
 
     const backgroundColor: keyof typeof theme.colors = checked
         ? "primary"
-        : "white";
-    const color: keyof typeof theme.colors = checked ? "white" : "text";
+        : "background";
+    const color: keyof typeof theme.colors = checked ? "background" : "text";
     const SIZE = theme.borderRadii.m * 2;
 
     return (

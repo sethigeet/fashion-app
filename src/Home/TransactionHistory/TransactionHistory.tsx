@@ -63,7 +63,7 @@ const TransactionHistory = ({
     const theme = useTheme();
 
     return (
-        <Box flex={1} bg="white">
+        <Box flex={1} bg="background">
             <Header
                 title="Transaction History"
                 left={{ icon: "menu", onPress: () => navigation.openDrawer() }}

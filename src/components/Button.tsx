@@ -26,7 +26,7 @@ const Button = ({ variant, label, onPress, ...rest }: Props) => {
     const { colors } = useTheme();
     const backgroundColor =
         variant === "primary" ? colors.primary : colors.grey;
-    const color = variant === "primary" ? colors.white : colors.secondary;
+    const color = variant === "primary" ? colors.background : colors.secondary;
 
     return (
         <View {...props}>

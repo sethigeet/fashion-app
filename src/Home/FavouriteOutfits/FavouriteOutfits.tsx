@@ -86,7 +86,7 @@ const FavouriteOutfits = ({
     const list = useRef<TransitioningView>(null);
 
     return (
-        <Box flex={1} bg="white">
+        <Box flex={1} bg="background">
             <Header
                 left={{
                     icon: "menu",

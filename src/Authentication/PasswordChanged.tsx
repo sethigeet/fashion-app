@@ -26,7 +26,7 @@ const PasswordChanged = ({
                     <RoundedIconButton
                         name="x"
                         color="secondary"
-                        backgroundColor="white"
+                        backgroundColor="background"
                         size={60}
                         iconRatio={0.6}
                         onPress={() => navigation.navigate("Login")}

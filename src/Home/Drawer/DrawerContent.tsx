@@ -64,7 +64,7 @@ const DrawerContent = ({
 }: DrawerContentComponentProps<DrawerContentOptions>) => {
     return (
         <Box flex={1}>
-            <Box flex={0.2} bg="white">
+            <Box flex={0.2} bg="background">
                 <Box
                     style={StyleSheet.absoluteFillObject}
                     borderBottomRightRadius="xl"
@@ -78,7 +78,7 @@ const DrawerContent = ({
                         right={{ icon: "shopping-bag", onPress: () => {} }}
                         title="Menu"
                         iconBackground="secondary"
-                        color="white"
+                        color="background"
                     />
                 </Box>
             </Box>
@@ -89,7 +89,7 @@ const DrawerContent = ({
                     style={StyleSheet.absoluteFillObject}
                     borderTopLeftRadius="xl"
                     borderBottomRightRadius="xl"
-                    bg="white"
+                    bg="background"
                     justifyContent="center"
                     alignItems="center"
                 >

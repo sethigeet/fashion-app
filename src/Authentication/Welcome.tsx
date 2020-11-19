@@ -24,7 +24,7 @@ const Welcome = ({ navigation }: AuthNavigationProps<"Welcome">) => {
     const theme = useTheme();
 
     return (
-        <Box flex={1} bg="white">
+        <Box flex={1} bg="background">
             <Box
                 flex={1}
                 borderBottomRightRadius="xl"
@@ -46,7 +46,7 @@ const Welcome = ({ navigation }: AuthNavigationProps<"Welcome">) => {
             <Box flex={1} borderTopLeftRadius="xl">
                 <Box bg="grey" style={StyleSheet.absoluteFillObject} />
                 <Box
-                    bg="white"
+                    bg="background"
                     borderTopLeftRadius="xl"
                     flex={1}
                     justifyContent="space-evenly"

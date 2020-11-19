@@ -1,6 +1,5 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { ThemeProvider } from "@shopify/restyle";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import {
@@ -9,7 +8,7 @@ import {
 } from "./src/Authentication";
 import { HomeNavigator } from "./src/Home";
 
-import { LoadAssets, theme, AppRoutes } from "./src/components";
+import { LoadAssets, AppRoutes, ThemeProvider } from "./src/components";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -25,7 +24,7 @@ const AppStack = createStackNavigator<AppRoutes>();
 
 export default function App() {
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider>
             <LoadAssets fonts={fonts} assets={assets}>
                 <StatusBar style="light" />
                 <SafeAreaProvider>

@@ -56,7 +56,7 @@ const Header = ({ left, title, right, iconBackground, color }: Props) => {
 
 Header.defaultProps = {
     color: "secondary",
-    iconBackground: "white",
+    iconBackground: "background",
 };
 
 export default Header;

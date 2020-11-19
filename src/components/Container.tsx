@@ -46,7 +46,7 @@ const Container = ({
                 bg={bottomColor}
             >
                 {top ? (
-                    <Box bg="white">
+                    <Box bg="background">
                         <Box
                             width={width}
                             height={height * 0.15}
@@ -72,7 +72,7 @@ const Container = ({
                     />
                     <Box
                         flex={1}
-                        bg="white"
+                        bg="background"
                         borderTopRightRadius={
                             top
                                 ? topCurve === "right"
@@ -104,7 +104,7 @@ const Container = ({
                 </Box>
 
                 {bottom ? (
-                    <Box bg="white">
+                    <Box bg="background">
                         <Box
                             width={width}
                             borderTopRightRadius={

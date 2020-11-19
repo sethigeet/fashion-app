@@ -18,7 +18,7 @@ const Footer = ({ text, actionText, onPress }: Props) => (
             <TouchableOpacity onPress={onPress}>
                 <Box flexDirection="row" alignItems="center">
                     <Text variant="buttonText">
-                        <Text color="white">{text} </Text>
+                        <Text color="background">{text} </Text>
                         <Text color="primary">{actionText}</Text>
                     </Text>
                 </Box>

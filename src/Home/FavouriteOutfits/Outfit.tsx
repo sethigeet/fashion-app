@@ -39,7 +39,7 @@ const Outfit = ({ outfit, width }: Props) => {
                     <RoundedIcon
                         name="check"
                         backgroundColor="primary"
-                        color="white"
+                        color="background"
                         size={25}
                     />
                 )}

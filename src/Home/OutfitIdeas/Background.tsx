@@ -7,7 +7,7 @@ const Background = () => {
     return (
         <Box flex={1} style={StyleSheet.absoluteFillObject}>
             <Box flex={1 / 2} bg="lightBlue">
-                <Box flex={1} bg="white" borderBottomRightRadius="xl" />
+                <Box flex={1} bg="background" borderBottomRightRadius="xl" />
             </Box>
             <Box flex={1 / 3} bg="secondary" borderTopLeftRadius="xl">
                 <Box

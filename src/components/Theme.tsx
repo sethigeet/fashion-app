@@ -1,7 +1,13 @@
-import { ImageStyle, TextStyle, ViewStyle } from "react-native";
-import { createTheme, useTheme as useReTheme } from "@shopify/restyle";
+import React, { ReactNode } from "react";
 
-const palette = {
+import { ImageStyle, TextStyle, ViewStyle } from "react-native";
+import {
+    createTheme,
+    useTheme as useReTheme,
+    ThemeProvider as ReThemeProvider,
+} from "@shopify/restyle";
+
+export const palette = {
     white: "#FFFFFF",
     orange: "#FE5E33",
     yellow: "#FFC641",
@@ -19,7 +25,7 @@ const theme = createTheme({
         text: "rgba(12, 13, 52, 0.7)", // secondary with opacity = 0.7
         grey: "rgba(12, 13, 52, 0.05)", // secondary with opacity = 0.5
         placeholder: "#151624",
-        white: palette.white,
+        background: palette.white,
         lightGrey: "#FAFAFA",
         darkGrey: "#808080",
         orange: palette.orange,
@@ -46,7 +52,7 @@ const theme = createTheme({
             fontSize: 80,
             lineHeight: 80,
             fontFamily: "SFProDisplay-Bold",
-            color: "white",
+            color: "background",
             textAlign: "center",
         },
         title1: {
@@ -93,6 +99,10 @@ const theme = createTheme({
 export type Theme = typeof theme;
 export const useTheme = () => useReTheme<Theme>();
 
+export const ThemeProvider = ({ children }: { children: ReactNode }) => (
+    <ReThemeProvider theme={theme}>{children}</ReThemeProvider>
+);
+
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 export const makeStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
     styles: (theme: Theme) => T
@@ -100,5 +110,3 @@ export const makeStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
     const currentTheme = useTheme();
     return styles(currentTheme);
 };
-
-export default theme;

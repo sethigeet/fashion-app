@@ -49,14 +49,14 @@ const DrawerItem = ({ icon, label, color, ...props }: Props) => {
                 borderRadius: theme.borderRadii.m,
                 backgroundColor: isFocused
                     ? theme.colors.primaryLight
-                    : theme.colors.white,
+                    : theme.colors.background,
             }}
         >
             <Box flexDirection="row" alignItems="center" p="m">
                 <RoundedIcon
                     name={icon}
                     backgroundColor={color}
-                    color="white"
+                    color="background"
                     size={36}
                     iconRatio={0.5}
                 />

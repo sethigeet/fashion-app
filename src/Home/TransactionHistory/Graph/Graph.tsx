@@ -32,7 +32,6 @@ const Graph = ({ data, minDate, maxDate }: Props) => {
     const step = width / numberOfMonths;
 
     const values = data.map((p) => p.value);
-    const dates = data.map((p) => p.date);
     const minY = Math.min(...values);
     const maxY = Math.max(...values);
 

@@ -65,7 +65,14 @@ export const useSpring = ({
         cond(eq(gestureState, State.END), [
             startClock(clock),
             spring(clock, state, config),
-            cond(state.finished, [onSnap && call([state.position], onSnap)]),
+            cond(
+                state.finished,
+                call([state.position], (position) => {
+                    if (onSnap) {
+                        onSnap(position);
+                    }
+                })
+            ),
             cond(
                 eq(config.toValue, 0),
                 [

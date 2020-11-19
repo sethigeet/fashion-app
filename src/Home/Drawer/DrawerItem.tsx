@@ -33,15 +33,15 @@ const DrawerItem = ({ icon, label, color, ...props }: Props) => {
     const theme = useTheme();
     const focusedRoute = getFocusedRouteNameFromRoute(useRoute());
     const navigation = useNavigation();
-    const isFocused = props.screen ? props.screen === focusedRoute : false;
+    const isFocused = "screen" in props ? props.screen === focusedRoute : false;
 
     return (
         <RectButton
             onPress={() => {
-                if (props.onPress) {
+                if ("onPress" in props) {
                     props.onPress(navigation);
                 }
-                if (props.screen) {
+                if ("screen" in props) {
                     navigation.navigate(props.screen);
                 }
             }}

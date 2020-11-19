@@ -21,7 +21,7 @@ interface Props {
 }
 
 const Card = ({ position, onSwipe, picture, step }: Props) => {
-    const backgroundColor = mixColor(position, "#C9E9E7", "#74BCB8");
+    const backgroundColor = mixColor(position, "#C9E9E7", "#74BCB8") as any;
     const translateYOffset = mix(position, 0, -80);
     const scale = mix(position, 1, 0.7);
     const imageScale = interpolate(position, {

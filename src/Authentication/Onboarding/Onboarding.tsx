@@ -59,12 +59,12 @@ const slides = [
 export const assets = [slides.map(({ picture: { src } }) => src)];
 
 const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
-    const scrollRef = useRef(null);
+    const scrollRef = useRef<Animated.ScrollView>(null);
     const { scrollHandler, x } = useScrollHandler();
     const backgroundColor = interpolateColor(x, {
         inputRange: slides.map((_, i) => i * width),
         outputRange: slides.map((slide) => slide.color),
-    });
+    }) as any;
 
     const theme = useTheme();
     const styles = useStyles();

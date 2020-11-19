@@ -1,18 +1,18 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React from "react";
 import { Dimensions } from "react-native";
 
 import { Box, Theme, useTheme } from "../../../components";
 
 import { getNumberOfMonths, lerp } from "./UtitlityFn";
 import Axes, { AXES_MARGIN } from "./Axes";
-import {
-    Transition,
-    Transitioning,
-    TransitioningView,
-} from "react-native-reanimated";
+import Animated, { divide, multiply, sub } from "react-native-reanimated";
+import { useIsFocused } from "@react-navigation/native";
+import { useTransition } from "react-native-redash";
 
 const { width: wWidth } = Dimensions.get("window");
 const aspectRatio = 195 / 305;
+
+const AnimatedBox = Animated.createAnimatedComponent(Box);
 
 export interface Transaction {
     id: number;
@@ -40,20 +40,9 @@ const Graph = ({ data, minDate, maxDate }: Props) => {
     const minY = Math.min(...values);
     const maxY = Math.max(...values);
 
-    const graphRef = useRef<TransitioningView>(null);
-    const tansition = (
-        <Transition.Together>
-            <Transition.In
-                type="slide-bottom"
-                durationMs={650}
-                interpolation="easeInOut"
-            />
-        </Transition.Together>
-    );
-
-    useLayoutEffect(() => {
-        graphRef.current?.animateNextTransition();
-    });
+    //# Animation
+    const isFocused = useIsFocused();
+    const transition = useTransition(isFocused, { duration: 650 });
 
     return (
         <Box pb={AXES_MARGIN} pl={AXES_MARGIN}>
@@ -64,25 +53,28 @@ const Graph = ({ data, minDate, maxDate }: Props) => {
                 maxX={maxDate}
                 step={step}
             />
-            <Transitioning.View
-                ref={graphRef}
-                transition={tansition}
-                style={{ overflow: "hidden" }}
-            >
+            <Animated.View style={{ overflow: "hidden" }}>
                 <Box width={width} height={height}>
                     {data.map((point) => {
                         const numberOfPastMonths = getNumberOfMonths(
                             minDate,
                             point.date
                         );
+                        const totalHeight = lerp(0, height, point.value / maxY);
+                        const translateY = multiply(
+                            totalHeight,
+                            sub(1, transition)
+                        );
+
                         return (
-                            <Box
+                            <AnimatedBox
                                 key={point.id}
                                 position="absolute"
                                 left={numberOfPastMonths * step}
                                 bottom={0}
                                 width={step}
-                                height={lerp(0, height, point.value / maxY)}
+                                height={totalHeight}
+                                style={{ transform: [{ translateY }] }}
                             >
                                 <Box
                                     position="absolute"
@@ -104,11 +96,11 @@ const Graph = ({ data, minDate, maxDate }: Props) => {
                                     bg={point.color}
                                     borderRadius="m"
                                 />
-                            </Box>
+                            </AnimatedBox>
                         );
                     })}
                 </Box>
-            </Transitioning.View>
+            </Animated.View>
         </Box>
     );
 };

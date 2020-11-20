@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { sub } from "react-native-reanimated";
-import { useTransition } from "react-native-redash";
+import { useTransition } from "react-native-redash/src/v1";
 
 import { Box, Header, HomeNavigationProps } from "../../components";
 

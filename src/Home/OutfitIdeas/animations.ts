@@ -10,7 +10,7 @@ import Animated, {
     startClock,
     stopClock,
 } from "react-native-reanimated";
-import { snapPoint, useClock, useValue } from "react-native-redash";
+import { snapPoint, useClock, useValue } from "react-native-redash/src/v1";
 
 interface WithSpringParams {
     value: Animated.Node<number>;

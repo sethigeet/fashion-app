@@ -26,15 +26,15 @@
         "intl": "^1.2.5",
         "react": "16.13.1",
         "react-dom": "16.13.1",
-        "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+        "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
         "react-native-gesture-handler": "~1.7.0",
         "react-native-keyboard-aware-scroll-view": "^0.9.3",
-        "react-native-reanimated": "~1.13.0",
-        "react-native-redash": "14.2.1",
+        "react-native-reanimated": "2.0.0-alpha.6.1",
+        "react-native-redash": "15.4.0",
         "react-native-safe-area-context": "3.1.4",
         "react-native-screens": "~2.10.1",
         "react-native-svg": "12.1.0",
-        "react-native-web": "~0.13.12",
+        "react-native-web": "~0.13.7",
         "yup": "^0.29.3"
     },
     "devDependencies": {
@@ -45,7 +45,7 @@
         "@types/yup": "^0.29.9",
         "eslint": "^7.13.0",
         "eslint-config-react-native-wcandillon": "^3.3.4",
-        "typescript": "~3.9.5"
+        "typescript": "~3.9.2"
     },
     "private": true
 }

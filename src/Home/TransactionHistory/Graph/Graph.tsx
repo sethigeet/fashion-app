@@ -5,9 +5,12 @@ import { Box, Theme, useTheme } from "../../../components";
 
 import { getNumberOfMonths, lerp } from "./UtitlityFn";
 import Axes, { AXES_MARGIN } from "./Axes";
-import Animated, { divide, multiply, sub } from "react-native-reanimated";
-import { useIsFocused } from "@react-navigation/native";
-import { useTransition } from "react-native-redash";
+import Animated, {
+    useAnimatedStyle,
+    useSharedValue,
+    withTiming,
+} from "react-native-reanimated";
+import { useFocusEffect } from "@react-navigation/native";
 
 const { width: wWidth } = Dimensions.get("window");
 const aspectRatio = 195 / 305;
@@ -41,8 +44,11 @@ const Graph = ({ data, minDate, maxDate }: Props) => {
     const maxY = Math.max(...values);
 
     //# Animation
-    const isFocused = useIsFocused();
-    const transition = useTransition(isFocused, { duration: 650 });
+    const transition = useSharedValue(0);
+    useFocusEffect(() => {
+        transition.value = withTiming(1, { duration: 650 });
+        return () => (transition.value = 0);
+    });
 
     return (
         <Box pb={AXES_MARGIN} pl={AXES_MARGIN}>
@@ -61,10 +67,11 @@ const Graph = ({ data, minDate, maxDate }: Props) => {
                             point.date
                         );
                         const totalHeight = lerp(0, height, point.value / maxY);
-                        const translateY = multiply(
-                            totalHeight,
-                            sub(1, transition)
-                        );
+                        const style = useAnimatedStyle(() => {
+                            const translateY =
+                                totalHeight * (1 - transition.value);
+                            return { transform: [{ translateY }] };
+                        });
 
                         return (
                             <AnimatedBox
@@ -74,7 +81,7 @@ const Graph = ({ data, minDate, maxDate }: Props) => {
                                 bottom={0}
                                 width={step}
                                 height={totalHeight}
-                                style={{ transform: [{ translateY }] }}
+                                style={style}
                             >
                                 <Box
                                     position="absolute"

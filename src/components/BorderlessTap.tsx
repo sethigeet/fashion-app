@@ -1,7 +1,11 @@
 import React, { ReactNode } from "react";
 
 import { State, TapGestureHandler } from "react-native-gesture-handler";
-import { useClock, useTapGestureHandler, useValue } from "react-native-redash";
+import {
+    useClock,
+    useTapGestureHandler,
+    useValue,
+} from "react-native-redash/src/v1";
 import Animated, {
     add,
     and,

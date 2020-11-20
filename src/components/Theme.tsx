@@ -32,6 +32,7 @@ const theme = createTheme({
         secondary: palette.navyBlue,
         danger: palette.reddishPink,
         text: palette.lightNavyBlue,
+        lightText: palette.lightestNavyBlue,
         placeholder: palette.lightBlack,
         background: palette.white,
         info: palette.darkGrey,
@@ -105,6 +106,12 @@ const theme = createTheme({
             lineHeight: 24,
             fontFamily: "SFProDisplay-SemiBold",
             color: "secondary",
+        },
+        placeholder: {
+            fontSize: 14,
+            lineHeight: 20,
+            fontFamily: "SFProDisplay-Regular",
+            color: "lightText",
         },
     },
     breakpoints: {

@@ -12,7 +12,7 @@ interface Props {
         onPress: () => void;
     };
     title: string;
-    right: {
+    right?: {
         icon: string;
         onPress: () => void;
     };
@@ -42,14 +42,18 @@ const Header = ({ left, title, right, iconBackground, color }: Props) => {
             <Text color={color} variant="header" textTransform="uppercase">
                 {title}
             </Text>
-            <RoundedIconButton
-                name={right.icon}
-                size={44}
-                iconRatio={0.5}
-                color={color}
-                backgroundColor={iconBackground}
-                onPress={right.onPress}
-            />
+            {right ? (
+                <RoundedIconButton
+                    name={right.icon}
+                    size={44}
+                    iconRatio={0.5}
+                    color={color}
+                    backgroundColor={iconBackground}
+                    onPress={right.onPress}
+                />
+            ) : (
+                <Box height={44} width={44} />
+            )}
         </Box>
     );
 };

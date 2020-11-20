@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { RectButton } from "react-native-gesture-handler";
+import { RectButton, RectButtonProperties } from "react-native-gesture-handler";
 
 import {
     spacing,
@@ -19,9 +19,10 @@ type Props = SpacingProps<Theme> &
         variant: "default" | "primary";
         label?: string;
         onPress: () => void;
+        style?: RectButtonProperties["style"];
     };
 
-const Button = ({ variant, label, onPress, ...rest }: Props) => {
+const Button = ({ variant, label, onPress, style, ...rest }: Props) => {
     const props = useRestyle(restyleFunctions, rest);
     const { colors } = useTheme();
     const backgroundColor =
@@ -31,7 +32,7 @@ const Button = ({ variant, label, onPress, ...rest }: Props) => {
     return (
         <View {...props}>
             <RectButton
-                style={[styles.container, { backgroundColor }]}
+                style={[styles.container, { backgroundColor }, style]}
                 onPress={onPress}
             >
                 <Text variant="buttonText" style={{ color }}>

@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import {
-    StyleSheet,
     TextInput as RNTextInput,
     TextInputProps as RNTextInputProps,
 } from "react-native";
@@ -34,7 +33,7 @@ const TextInput = forwardRef<RNTextInput, Props>(
                 flexDirection="row"
                 height={48}
                 borderRadius="s"
-                borderWidth={StyleSheet.hairlineWidth}
+                borderWidth={1}
                 borderColor={color}
                 alignItems="center"
             >

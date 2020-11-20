@@ -14,7 +14,13 @@ import PasswordChanged from "./PasswordChanged";
 import { assets as onboardingAssets } from "./Onboarding";
 import { assets as welcomeAssets } from "./Welcome";
 
-export const assets = [...onboardingAssets, ...welcomeAssets];
+const patternAssets = [
+    require("./assets/patterns/1.png"),
+    require("./assets/patterns/2.png"),
+    require("./assets/patterns/3.png"),
+    require("./assets/patterns/4.png"),
+];
+export const assets = [...onboardingAssets, ...welcomeAssets, ...patternAssets];
 
 const AuthenticationStack = createStackNavigator<AuthenticationRoutes>();
 export const AuthenticationNavigator = () => (

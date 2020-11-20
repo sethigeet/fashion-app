@@ -33,6 +33,7 @@ const PasswordChanged = ({
                     />
                 </Box>
             }
+            pattern={4}
         >
             <Box p="xl" flex={1} justifyContent="center">
                 <Box mb="l">

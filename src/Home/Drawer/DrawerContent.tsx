@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, Image, StyleSheet } from "react-native";
 
 import {
     DrawerContentComponentProps,
@@ -10,6 +10,8 @@ import { Box, Header, Text } from "../../components";
 
 import DrawerItem, { Props as DrawerItemProps } from "./DrawerItem";
 import { CommonActions } from "@react-navigation/native";
+
+export const assets = [require("../assets/patterns/drawer.png")];
 
 const { width } = Dimensions.get("window");
 export const DRAWER_WIDTH = width * 0.8;

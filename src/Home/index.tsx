@@ -4,12 +4,14 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import { HomeRoutes } from "../components";
 
-import DrawerContent, { DRAWER_WIDTH } from "./Drawer";
+import DrawerContent, { DRAWER_WIDTH, drawerAssets } from "./Drawer";
 import OutfitIdeas from "./OutfitIdeas";
 import FavouriteOutfits from "./FavouriteOutfits";
 import TransactionHistory from "./TransactionHistory";
 import EditProfile from "./EditProfile";
 import NotificationsSettings from "./NotificationsSettings";
+
+export const assets = [...drawerAssets];
 
 const HomeDrawer = createDrawerNavigator<HomeRoutes>();
 export const HomeNavigator = () => {

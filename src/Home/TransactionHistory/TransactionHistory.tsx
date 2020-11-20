@@ -6,7 +6,7 @@ import {
     Header,
     HomeNavigationProps,
     Text,
-    TopRightCurve,
+    ScrollableContent,
     useTheme,
 } from "../../components";
 
@@ -63,64 +63,75 @@ const TransactionHistory = ({
     const theme = useTheme();
 
     return (
-        <Box flex={1} bg="background">
-            <Header
-                title="Transaction History"
-                left={{ icon: "menu", onPress: () => navigation.openDrawer() }}
-                right={{ icon: "share", onPress: () => {} }}
-            />
-            <Box p="l" pb="s">
-                <Box
-                    flexDirection="row"
-                    justifyContent="space-between"
-                    alignItems="flex-end"
-                >
-                    <Box>
-                        <Text
-                            variant="header"
-                            color="secondary"
-                            opacity={0.3}
-                            textTransform="uppercase"
-                        >
-                            Total Spent
-                        </Text>
-                        <Text variant="title1">$619,19</Text>
-                    </Box>
-                    <Box bg="primaryLight" borderRadius="m" p="s">
-                        <Text variant="buttonText" color="primary">
-                            All Time
-                        </Text>
-                    </Box>
-                </Box>
-                <Box mt="xl" mb="m">
-                    <Graph data={data} minDate={minDate} maxDate={maxDate} />
-                </Box>
-            </Box>
-            <ScrollView
-                contentContainerStyle={{
-                    paddingBottom: footerHeight,
-                    paddingHorizontal: theme.spacing.l,
-                }}
-                showsVerticalScrollIndicator={false}
-            >
-                {data.map((transaction) => (
-                    <Transaction
-                        key={transaction.id}
-                        transaction={transaction}
-                    />
-                ))}
-            </ScrollView>
-            <TopRightCurve footerHeight={footerHeight} color="primary" />
-            <Box position="absolute" bottom={0} left={0} right={0}>
-                <Box
-                    bg="primary"
-                    p="m"
-                    alignItems="center"
-                    borderTopLeftRadius="xl"
-                    height={footerHeight}
+        <ScrollableContent>
+            <Box flex={1} bg="background">
+                <Header
+                    title="Transaction History"
+                    left={{
+                        icon: "menu",
+                        onPress: () => navigation.openDrawer(),
+                    }}
+                    right={{ icon: "share", onPress: () => {} }}
                 />
+                <Box p="l" pb="s">
+                    <Box
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        alignItems="flex-end"
+                    >
+                        <Box>
+                            <Text
+                                variant="header"
+                                color="secondary"
+                                opacity={0.3}
+                                textTransform="uppercase"
+                            >
+                                Total Spent
+                            </Text>
+                            <Text variant="title1">$619,19</Text>
+                        </Box>
+                        <Box bg="primaryLight" borderRadius="m" p="s">
+                            <Text variant="buttonText" color="primary">
+                                All Time
+                            </Text>
+                        </Box>
+                    </Box>
+                    <Box mt="xl" mb="m">
+                        <Graph
+                            data={data}
+                            minDate={minDate}
+                            maxDate={maxDate}
+                        />
+                    </Box>
+                </Box>
+                <ScrollView
+                    contentContainerStyle={{
+                        paddingBottom: footerHeight,
+                        paddingHorizontal: theme.spacing.l,
+                    }}
+                    showsVerticalScrollIndicator={false}
+                >
+                    {data.map((transaction) => (
+                        <Transaction
+                            key={transaction.id}
+                            transaction={transaction}
+                        />
+                    ))}
+                    {data.map((transaction) => (
+                        <Transaction
+                            key={transaction.id}
+                            transaction={transaction}
+                        />
+                    ))}
+                    {data.map((transaction) => (
+                        <Transaction
+                            key={transaction.id}
+                            transaction={transaction}
+                        />
+                    ))}
+                </ScrollView>
             </Box>
-        </Box>
+        </ScrollableContent>
     );
 };
 

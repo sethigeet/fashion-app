@@ -6,13 +6,13 @@ import {
     AuthenticationNavigator,
     assets as authenticationAssets,
 } from "./src/Authentication";
-import { HomeNavigator } from "./src/Home";
+import { HomeNavigator, assets as homeAssets } from "./src/Home";
 
 import { LoadAssets, AppRoutes, ThemeProvider } from "./src/components";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
-const assets = [...authenticationAssets];
+const assets = [...authenticationAssets, ...homeAssets];
 const fonts = {
     "SFProDisplay-Bold": require("./assets/fonts/SF-Pro-Display-Bold.ttf"),
     "SFProDisplay-SemiBold": require("./assets/fonts/SF-Pro-Display-Semibold.ttf"),

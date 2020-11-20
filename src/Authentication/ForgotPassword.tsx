@@ -57,6 +57,7 @@ const ForgotPassword = ({
                     onPress={() => navigation.navigate("Login")}
                 />
             }
+            pattern={3}
         >
             <Box p="xl" flex={1} justifyContent="center">
                 <Box mb="l">

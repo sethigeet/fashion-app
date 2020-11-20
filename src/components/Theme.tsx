@@ -20,7 +20,7 @@ export const palette = {
     lightNavyBlue: "rgba(12, 13, 52, 0.7)", // secondary with opacity = 0.7
     lightestNavyBlue: "rgba(12, 13, 52, 0.5)", // secondary with opacity = 0.5
     reddishPink: "#FF0058",
-    grey: "#F4F0EF",
+    grey: "#F6F6F6",
     darkGrey: "#808080",
     lightBlack: "#151624",
 };

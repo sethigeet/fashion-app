@@ -61,6 +61,7 @@ const Login = ({ navigation }: AuthNavigationProps<"Login">) => {
                     onPress={() => navigation.navigate("SignUp")}
                 />
             }
+            pattern={1}
         >
             <Box p="xl" flex={1} justifyContent="center">
                 <Box mb="l">

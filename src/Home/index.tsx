@@ -10,6 +10,7 @@ import FavouriteOutfits from "./FavouriteOutfits";
 import TransactionHistory from "./TransactionHistory";
 import EditProfile from "./EditProfile";
 import NotificationsSettings from "./NotificationsSettings";
+import Cart from "./Cart";
 
 export const assets = [...drawerAssets];
 
@@ -36,6 +37,7 @@ export const HomeNavigator = () => {
                 name="NotificationsSettings"
                 component={NotificationsSettings}
             />
+            <HomeDrawer.Screen name="Cart" component={Cart} />
         </HomeDrawer.Navigator>
     );
 };

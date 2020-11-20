@@ -40,4 +40,5 @@ export type HomeRoutes = {
     TransactionHistory: undefined;
     EditProfile: undefined;
     NotificationsSettings: undefined;
+    Cart: undefined;
 };

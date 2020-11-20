@@ -15,7 +15,10 @@ const NotificationsSettings = ({
                     icon: "menu",
                     onPress: () => navigation.openDrawer(),
                 }}
-                right={{ icon: "shopping-bag", onPress: () => {} }}
+                right={{
+                    icon: "shopping-bag",
+                    onPress: () => navigation.navigate("Cart"),
+                }}
                 title="Notifications Settings"
             />
             <Box px="m" pt="m">

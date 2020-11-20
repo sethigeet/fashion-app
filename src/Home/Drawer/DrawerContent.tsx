@@ -77,7 +77,10 @@ const DrawerContent = ({
                             icon: "x",
                             onPress: () => navigation.closeDrawer(),
                         }}
-                        right={{ icon: "shopping-bag", onPress: () => {} }}
+                        right={{
+                            icon: "shopping-bag",
+                            onPress: () => navigation.navigate("Cart"),
+                        }}
                         title="Menu"
                         iconBackground="secondary"
                         color="background"

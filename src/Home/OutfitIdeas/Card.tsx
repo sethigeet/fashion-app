@@ -7,7 +7,7 @@ import {
     mix,
     mixColor,
     usePanGestureHandler,
-} from "react-native-redash/src/v1";
+} from "react-native-redash/lib/module/v1";
 import { useSpring } from "./animations";
 
 import { Box } from "../../components";

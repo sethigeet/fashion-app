@@ -5,7 +5,7 @@ import {
     useClock,
     useTapGestureHandler,
     useValue,
-} from "react-native-redash/src/v1";
+} from "react-native-redash/lib/module/v1";
 import Animated, {
     add,
     and,

@@ -79,9 +79,7 @@ const FavouriteOutfits = ({
     const CARD_WIDTH = (width - spacing.s * 2) / 2 - spacing.l;
 
     const transition = (
-        <Transition.Together>
-            <Transition.Change interpolation="easeInOut" durationMs={1000} />
-        </Transition.Together>
+        <Transition.Change interpolation="easeInOut" durationMs={1000} />
     );
     const list = useRef<TransitioningView>(null);
 

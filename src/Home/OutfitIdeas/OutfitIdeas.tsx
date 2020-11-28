@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { sub } from "react-native-reanimated";
-import { useTransition } from "react-native-redash/src/v1";
+import { useTransition } from "react-native-redash/lib/module/v1";
 
 import { Box, Header, HomeNavigationProps } from "../../components";
 
@@ -37,7 +37,10 @@ const OutfitIdeas = ({ navigation }: HomeNavigationProps<"OutfitIdeas">) => {
         <Box flex={1} bg="background">
             <Header
                 left={{ icon: "menu", onPress: () => navigation.openDrawer() }}
-                right={{ icon: "shopping-bag", onPress: () => {} }}
+                right={{
+                    icon: "shopping-bag",
+                    onPress: () => navigation.navigate("Cart"),
+                }}
                 title="Outifit Ideas"
             />
             <Categories />

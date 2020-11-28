@@ -6,7 +6,10 @@ import Animated, {
     interpolateNode,
     multiply,
 } from "react-native-reanimated";
-import { useScrollHandler, interpolateColor } from "react-native-redash/src/v1";
+import {
+    useScrollHandler,
+    interpolateColor,
+} from "react-native-redash/lib/module/v1";
 
 import Slide, { SLIDE_HEIGHT } from "./Slide";
 import SubSlide from "./SubSlide";

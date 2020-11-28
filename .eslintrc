@@ -1,5 +1,5 @@
 {
-    "extends": ["react-native-wcandillon", "prettier", "prettier/react"],
+    "extends": ["react-native-wcandillon"],
     "linterOptions": {
         "exclude": ["node_modules/**"]
     }

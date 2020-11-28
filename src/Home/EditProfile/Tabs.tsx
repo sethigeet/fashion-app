@@ -1,8 +1,8 @@
 import React, { Children, ReactNode, useState } from "react";
 import { Dimensions } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
-import Animated, { multiply, sub } from "react-native-reanimated";
-import { mix, useTransition } from "react-native-redash/lib/module/v1";
+import Animated, { useAnimatedStyle } from "react-native-reanimated";
+import { mix, useTiming } from "react-native-redash";
 import { Box, Text, useTheme } from "../../components";
 
 const { width } = Dimensions.get("window");
@@ -22,9 +22,16 @@ const Tabs = ({ tabs, children }: Props) => {
     const theme = useTheme();
     const activeDotSize = theme.borderRadii.m;
 
-    const transition = useTransition(activeTabIndex, { duration: 200 });
-    const activeDotTranslateX = mix(transition, width * 0.25, width * 0.75);
-    const contentTranslateX = multiply(-width, transition);
+    const transition = useTiming(activeTabIndex, { duration: 200 });
+
+    const activeDotStyle = useAnimatedStyle(() => ({
+        transform: [
+            { translateX: mix(transition.value, width * 0.25, width * 0.75) },
+        ],
+    }));
+    const contentStyle = useAnimatedStyle(() => ({
+        transform: [{ translateX: -width * transition.value }],
+    }));
 
     return (
         <Box flex={1}>
@@ -52,25 +59,29 @@ const Tabs = ({ tabs, children }: Props) => {
                     </RectButton>
                 ))}
                 <Animated.View
-                    style={{
-                        position: "absolute",
-                        bottom: 0,
-                        left: -activeDotSize / 2,
-                        transform: [{ translateX: activeDotTranslateX }],
-                        width: activeDotSize,
-                        height: activeDotSize,
-                        borderRadius: activeDotSize / 2,
-                        backgroundColor: theme.colors.primary,
-                    }}
+                    style={[
+                        {
+                            position: "absolute",
+                            bottom: 0,
+                            left: -activeDotSize / 2,
+                            width: activeDotSize,
+                            height: activeDotSize,
+                            borderRadius: activeDotSize / 2,
+                            backgroundColor: theme.colors.primary,
+                        },
+                        activeDotStyle,
+                    ]}
                 />
             </Box>
             <Animated.View
-                style={{
-                    flex: 1,
-                    width: width * tabs.length,
-                    flexDirection: "row",
-                    transform: [{ translateX: contentTranslateX }],
-                }}
+                style={[
+                    {
+                        flex: 1,
+                        width: width * tabs.length,
+                        flexDirection: "row",
+                    },
+                    contentStyle,
+                ]}
             >
                 {Children.map(children, (child, index) => (
                     <Box flex={1} key={index} width={width}>

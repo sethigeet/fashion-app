@@ -4,6 +4,7 @@ import { PanGestureHandler } from "react-native-gesture-handler";
 
 import Animated, {
     interpolate,
+    runOnJS,
     useAnimatedGestureHandler,
     useAnimatedStyle,
     useDerivedValue,
@@ -57,7 +58,7 @@ const Card = ({ index, aIndex, onSwipe, picture, step }: Props) => {
                     restSpeedThreshold: dest === 0 ? 0.01 : 100,
                     restDisplacementThreshold: dest === 0 ? 0.01 : 100,
                 },
-                () => dest !== 0 && onSwipe()
+                () => dest !== 0 && runOnJS(onSwipe)
             );
         },
     });
